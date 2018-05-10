@@ -9,8 +9,11 @@
 #import "NSObject+DDMQuickFilled.h"
 #import "NSObject+DDMRuntimeAPI.h"
 #import "NSObject+DDMJudgeAPI.h"
+
 @implementation NSObject (DDMQuickFilled)
-#pragma mark API
+
+#pragma mark -
+#pragma mark - API
 + (instancetype)qf_assignmentFromInstance:(NSObject *)fillInstance
 {
     id newInstance = [[[self class] alloc] init];
@@ -29,7 +32,8 @@
     [self assignmentFromInstance:fillInstance];
 }
 
-#pragma mark 中介
+#pragma mark -
+#pragma mark - 中介
 - (void)assignmentFromInstance:(NSObject *)fillInstance
 {
     if ([self isKindOfClass:[NSArray class]]) return;
@@ -66,7 +70,9 @@
         }];
     }
 }
-#pragma mark 解决KVC冲突
+
+#pragma mark -
+#pragma mark - 解决KVC冲突
 - (void)qf_setValue:(id)value forUndefinedKey:(NSString *)key
 {
     NSString *ssertString = [NSString stringWithFormat:@"KVC是出现了找不到的KEY的情况：%@",key];

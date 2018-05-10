@@ -9,7 +9,8 @@
 #import "NSObject+DDMRuntimeAPI.h"
 
 @implementation NSObject (DDMRuntimeAPI)
-#pragma mark Runtime_Property相关接口
+#pragma mark -
+#pragma mark - Runtime_Property相关接口
 /*
  获取对象的所有属性(递归到父类)
  */
@@ -36,7 +37,8 @@
         return [NSObject qf_getAllPropertiesAndVaulesToRootClass:superClassName andPropers:propers];
     }
 }
-#pragma mark Runtime_Method相关接口
+#pragma mark -
+#pragma mark - Runtime_Method相关接口
 /**
  方法交换
  
