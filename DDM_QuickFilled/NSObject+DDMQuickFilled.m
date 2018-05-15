@@ -41,9 +41,9 @@
     
     @autoreleasepool {
         // 获取填充实例所有property
-        NSArray *fillClassPropertys = [NSObject qf_getAllPropertiesAndVaulesToRootClass:[fillInstance class] andPropers:nil];
-        NSArray *waitFillPropertys = [NSObject qf_getAllPropertiesAndVaulesToRootClass:[self class] andPropers:nil];
-        
+        NSArray *fillClassPropertys = [NSObject propertyCacheWithClass:[fillInstance class]];
+        NSArray *waitFillPropertys = [NSObject propertyCacheWithClass:[self class]];
+
         // 避免KVC引起的奔溃，再遍历赋值前重写本类的setValue: forUndefinedKey:
         SEL originSEL = @selector(setValue:forUndefinedKey:);
         Method originMethod = class_getInstanceMethod([self class], originSEL);
@@ -77,5 +77,30 @@
 {
     NSString *ssertString = [NSString stringWithFormat:@"KVC是出现了找不到的KEY的情况：%@",key];
     NSAssert(key != nil,ssertString);
+}
+
+#pragma mark -
+#pragma mark - 缓存
++ (NSArray *)propertyCacheWithClass:(Class)cls {
+    if (!cls) return nil;
+    static CFMutableDictionaryRef cache;
+    static dispatch_once_t onceToken;
+    static dispatch_semaphore_t lock;
+    dispatch_once(&onceToken, ^{
+        cache = CFDictionaryCreateMutable(CFAllocatorGetDefault(), 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
+        lock = dispatch_semaphore_create(1);
+    });
+    dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
+    NSArray *propertyCache = CFDictionaryGetValue(cache, (__bridge const void *)(cls));
+    dispatch_semaphore_signal(lock);
+    if (!propertyCache) {
+        propertyCache = [NSObject qf_getAllPropertiesAndVaulesToRootClass:cls andPropers:nil];
+        if (propertyCache) {
+            dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
+            CFDictionarySetValue(cache, (__bridge const void *)(cls), (__bridge const void *)(propertyCache));
+            dispatch_semaphore_signal(lock);
+        }
+    }
+    return propertyCache;
 }
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D50182B20AA937E0047088B /* DDMClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D50182A20AA937E0047088B /* DDMClassInfo.m */; };
 		8D9FFBEF208DB4DD00F2905D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9FFBEE208DB4DD00F2905D /* AppDelegate.m */; };
 		8D9FFBF2208DB4DD00F2905D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D9FFBF1208DB4DD00F2905D /* ViewController.m */; };
 		8D9FFBF5208DB4DD00F2905D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D9FFBF3208DB4DD00F2905D /* Main.storyboard */; };
@@ -41,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8D50182920AA937E0047088B /* DDMClassInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDMClassInfo.h; sourceTree = "<group>"; };
+		8D50182A20AA937E0047088B /* DDMClassInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDMClassInfo.m; sourceTree = "<group>"; };
 		8D9FFBEA208DB4DD00F2905D /* DDM_QuickFilled.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDM_QuickFilled.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9FFBED208DB4DD00F2905D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8D9FFBEE208DB4DD00F2905D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -126,6 +129,8 @@
 				8D9FFC24208DC09F00F2905D /* NSObject+DDMRuntimeAPI.m */,
 				8D9FFC37208E181300F2905D /* NSObject+DDMJudgeAPI.h */,
 				8D9FFC38208E181300F2905D /* NSObject+DDMJudgeAPI.m */,
+				8D50182920AA937E0047088B /* DDMClassInfo.h */,
+				8D50182A20AA937E0047088B /* DDMClassInfo.m */,
 			);
 			path = DDM_QuickFilled;
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 				8D9FFC2C208DD5F300F2905D /* Father.m in Sources */,
 				8D9FFBF2208DB4DD00F2905D /* ViewController.m in Sources */,
 				8D9FFC22208DB52800F2905D /* NSObject+DDMQuickFilled.m in Sources */,
+				8D50182B20AA937E0047088B /* DDMClassInfo.m in Sources */,
 				8D9FFBFD208DB4DD00F2905D /* main.m in Sources */,
 				8D9FFC39208E181300F2905D /* NSObject+DDMJudgeAPI.m in Sources */,
 				8D9FFBEF208DB4DD00F2905D /* AppDelegate.m in Sources */,

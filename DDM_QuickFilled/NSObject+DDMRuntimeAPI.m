@@ -7,7 +7,6 @@
 //
 
 #import "NSObject+DDMRuntimeAPI.h"
-
 @implementation NSObject (DDMRuntimeAPI)
 #pragma mark -
 #pragma mark - Runtime_Property相关接口
@@ -60,5 +59,4 @@
         method_exchangeImplementations(oldMethod, newMethod);
     }
 }
-
 @end
