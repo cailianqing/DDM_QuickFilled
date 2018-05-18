@@ -36,6 +36,7 @@
         return [NSObject qf_getAllPropertiesAndVaulesToRootClass:superClassName andPropers:propers];
     }
 }
+
 #pragma mark -
 #pragma mark - Runtime_Method相关接口
 /**
