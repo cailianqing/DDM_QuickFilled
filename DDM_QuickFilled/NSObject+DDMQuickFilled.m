@@ -48,17 +48,18 @@
         
         // 遍历赋值
         [fillClassPropertys enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if ([fillInstance valueForKey:obj] != nil && [waitFillPropertys containsObject:obj]) {
+            id valueOfProperty = [fillInstance valueForKey:obj];
+            if (valueOfProperty != nil && [waitFillPropertys containsObject:obj]) {
                 
-                if ([self qf_mutableCopyJudge:[fillInstance valueForKey:obj]]) {
-                    [self setValue:[[fillInstance valueForKey:obj] mutableCopy] forKey:obj];
+                if ([self qf_mutableCopyJudge:valueOfProperty]) {
+                    [self setValue:[valueOfProperty mutableCopy] forKey:obj];
                 }
-                else if ([self qf_copyJudge:[fillInstance valueForKey:obj]])
+                else if ([self qf_copyJudge:valueOfProperty])
                 {
-                    [self setValue:[[fillInstance valueForKey:obj] copy] forKey:obj];
+                    [self setValue:[valueOfProperty copy] forKey:obj];
                 }
                 else{
-                    [self setValue:[fillInstance valueForKey:obj] forKey:obj];
+                    [self setValue:valueOfProperty forKey:obj];
                 }
             }
         }];
