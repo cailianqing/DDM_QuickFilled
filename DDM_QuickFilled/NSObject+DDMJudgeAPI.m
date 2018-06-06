@@ -34,7 +34,10 @@
 - (BOOL)qf_copyJudge:(NSObject *)obj
 {
     NSString *isaString = [NSString stringWithUTF8String:class_getName(objc_getMetaClass(object_getClassName(obj)))];
-    BOOL mutableBlock = [isaString isEqualToString:@"__NSGlobalBlock__"];
-    return mutableBlock;
+    BOOL mutableGlobalBlock = [isaString isEqualToString:@"__NSGlobalBlock__"];
+    BOOL mutableStackBlock = [isaString isEqualToString:@"__NSStackBlock__"];
+    BOOL mutableMallocBlock = [isaString isEqualToString:@"__NSMallocBlock__"];
+
+    return mutableGlobalBlock || mutableStackBlock || mutableMallocBlock ;
 }
 @end
