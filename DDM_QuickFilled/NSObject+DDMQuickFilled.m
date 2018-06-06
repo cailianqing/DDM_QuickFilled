@@ -33,17 +33,10 @@
 #pragma mark - 中介
 - (void)assignmentFromInstance:(NSObject *)fillInstance
 {
-    // 如果是集合类 直接copy赋值
-    if ([self isKindOfClass:[NSArray class]])
-        {
-            [self mutableCopy];
-            return;
-        }
-    if ([self isKindOfClass:[NSDictionary class]])
-        {
-            [self mutableCopy];
-            return;
-        }
+    // 如果是集合类 直接mutable copy赋值
+    if ([self isKindOfClass:[NSArray class]]) return;
+        
+    if ([self isKindOfClass:[NSDictionary class]]) return;
     
     @autoreleasepool {
         // 获取填充实例所有property

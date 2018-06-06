@@ -11,7 +11,7 @@
 
 @implementation NSObject (DDMJudgeAPI)
 /**
- 模型可变类型判断mutableCopy
+ 判断是否集合类
  
  @param obj 实例
  @return 可变返回YES
@@ -22,11 +22,12 @@
     BOOL mutableArray = [isaString isEqualToString:@"__NSArrayM"];
     BOOL mutableDict = [isaString isEqualToString:@"__NSDictionaryM"];
     BOOL mutableSet = [isaString isEqualToString:@"__NSSetM"];
+    
     return mutableArray || mutableDict || mutableSet;
 }
 
 /**
- 模型可变类型判断copy
+ 判断是否block类
  
  @param obj 实例
  @return 可变返回YES
