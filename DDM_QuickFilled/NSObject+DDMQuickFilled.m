@@ -34,8 +34,16 @@
 - (void)assignmentFromInstance:(NSObject *)fillInstance
 {
     // 如果是集合类 直接copy赋值
-    if ([self isKindOfClass:[NSArray class]]) self = [fillInstance mutableCopy]; return;
-    if ([self isKindOfClass:[NSDictionary class]]) self = [fillInstance mutableCopy]; return;
+    if ([self isKindOfClass:[NSArray class]])
+        {
+            [self mutableCopy];
+            return;
+        }
+    if ([self isKindOfClass:[NSDictionary class]])
+        {
+            [self mutableCopy];
+            return;
+        }
     
     @autoreleasepool {
         // 获取填充实例所有property
