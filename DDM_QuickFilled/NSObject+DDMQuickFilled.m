@@ -16,6 +16,9 @@
 #pragma mark - API
 + (instancetype)qf_assignmentFromInstance:(NSObject *)fillInstance
 {
+    if ([self isKindOfClass:[NSArray class]]) return [self mutableCopy];
+    if ([self isKindOfClass:[NSDictionary class]]) return [self mutableCopy];
+    
     id newInstance = [[[self class] alloc] init];
     [newInstance qf_assignmentFromInstance:fillInstance];
     return newInstance;
@@ -30,8 +33,9 @@
 #pragma mark - 中介
 - (void)assignmentFromInstance:(NSObject *)fillInstance
 {
-    if ([self isKindOfClass:[NSArray class]]) return;
-    if ([self isKindOfClass:[NSDictionary class]]) return;
+    // 如果是集合类 直接copy赋值
+    if ([self isKindOfClass:[NSArray class]]) self = [fillInstance mutableCopy]; return;
+    if ([self isKindOfClass:[NSDictionary class]]) self = [fillInstance mutableCopy]; return;
     
     @autoreleasepool {
         // 获取填充实例所有property
