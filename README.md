@@ -35,3 +35,14 @@
 - YYMolde讲类的粒度拆分的很细，对类的每一个部分进行了分解。然后对整合之后的类进行了缓存。我这里采用了直接对遍历出来的数组进行缓存
 - 这个需要一个标记位来判定什么时候这个缓存需要更新，可能还是需要像YYModel一样精细粒度
 
+### 4.性能测试
+- 缓存与为缓存
+ - 两个类有缓存执行9999次
+ - ![iamge](https://raw.githubusercontent.com/cailianqing/MacDownScreenRepsitory/master/picture_%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B%E7%86%9F%E6%82%89/%E6%9C%89%E7%BC%93%E5%AD%98%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%AF%B9%E6%AF%94.jpg)
+ - 两个类无缓存执行9999次
+ - ![iamge](https://raw.githubusercontent.com/cailianqing/MacDownScreenRepsitory/master/picture_%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B%E7%86%9F%E6%82%89/%E6%97%A0%E7%BC%93%E5%AD%98%E4%B8%A4%E4%B8%AA%E7%B1%BB%E5%AF%B9%E6%AF%94.jpg)
+ - 三个类有缓存执行9999次
+ - ![iamge](https://raw.githubusercontent.com/cailianqing/MacDownScreenRepsitory/master/picture_%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B%E7%86%9F%E6%82%89/%E6%9C%89%E7%BC%93%E5%AD%98%E4%B8%89%E4%B8%AA%E7%B1%BB%E5%AF%B9%E6%AF%94.jpeg)
+ - 三个类无缓存执行9999次
+ - ![iamge](https://raw.githubusercontent.com/cailianqing/MacDownScreenRepsitory/master/picture_%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B%E7%86%9F%E6%82%89/%E6%97%A0%E7%BC%93%E5%AD%98%E4%B8%89%E4%B8%AA%E7%B1%BB%E5%AF%B9%E6%AF%94.jpeg)
+- 内存占用
