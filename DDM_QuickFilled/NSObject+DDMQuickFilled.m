@@ -64,7 +64,13 @@
                     [self setValue:[valueOfProperty copy] forKey:obj];
                 }
                 else{
-                    [self setValue:valueOfProperty forKey:obj];
+                    if ([obj respondsToSelector:@selector(copy)] || [obj respondsToSelector:@selector(copyWithZone:)]) {
+                        [self setValue:[valueOfProperty copy] forKey:obj];
+                    } else if([obj respondsToSelector:@selector(mutableCopy)] || [obj respondsToSelector:@selector(mutableCopyWithZone:)]) {
+                        [self setValue:[valueOfProperty mutableCopy] forKey:obj];
+                    }else {
+                        [self setValue:valueOfProperty forKey:obj];
+                    }
                 }
             }
         }];
